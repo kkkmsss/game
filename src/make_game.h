@@ -2,6 +2,7 @@
 #define MAKE_GAME_H
 
 #include <stdlib.h>
+#include <stdio.h>
 #include <time.h>
 
 #define MAX_TURN 8
