@@ -6,6 +6,8 @@
 
 #define MAX_TURN 8
 
+// gcc src/main.c src/make_game.c -o game
+
 // int decide_turn(void);
 void play_game(void);
 // void player_turn(void);
