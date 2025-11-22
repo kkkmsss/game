@@ -1,4 +1,14 @@
 #ifndef MAKE_GAME_H
 #define MAKE_GAME_H
 
-#endif
+#include <stdlib.h>
+#include <time.h>
+
+#define MAX_TURN 8
+
+// int decide_turn(void);
+void play_game(void);
+// void player_turn(void);
+// void opponent_turn(void);
+
+#endif // MAKE_GAME_H

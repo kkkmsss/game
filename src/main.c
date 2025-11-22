@@ -3,5 +3,13 @@
 
 int main() {
 
-    
+    printf("Let's start Tic-Tac-Toe!!\n");
+
+    // int turn;
+    // turn = decide_turn();
+
+    // printf("You are O.\n");
+
+    play_game(void);
+    return 0;
 }
