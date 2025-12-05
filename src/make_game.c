@@ -26,27 +26,17 @@
 // }
 
 void play_game(void) {
-
     char board[3][3] = {
-
         {'1', '2', '3'},
         {'4', '5', '6'},
         {'7', '8', '9'}
     };
-
     int i;
-    for(i = 0; i < MAX_TURN; i++) {
-
-        int m;
-        int n;
-
-        for(m = 0; m < 3; m++) {
-
-            for(n = 0; n < 3; n++) {
-
-                printf("%c", board[m][n]);
-            }
-            printf("\n");
+    for (i = 0; i < 3; i++) {
+        int j;
+        for (j = 0; j < 3; j++) {
+            printf("%c ", board[i][j]);
         }
+        printf("\n");
     }
 }
