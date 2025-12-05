@@ -10,6 +10,6 @@ int main() {
 
     // printf("You are O.\n");
 
-    play_game();
+    playGame();
     return 0;
 }

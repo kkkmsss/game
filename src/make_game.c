@@ -25,18 +25,26 @@
 // opponent_turn() {
 // }
 
-void play_game(void) {
-    char board[3][3] = {
-        {'1', '2', '3'},
-        {'4', '5', '6'},
-        {'7', '8', '9'}
-    };
+void outputBord(char board[ROWS][COLS]) {
     int i;
-    for (i = 0; i < 3; i++) {
+    for (i = 0; i < ROWS; i++) {
         int j;
-        for (j = 0; j < 3; j++) {
+        for (j = 0; j < COLS; j++) {
             printf("%c ", board[i][j]);
         }
         printf("\n");
     }
+}
+
+void convBord(char board[ROWS][COLS], int input) {
+
+}
+
+void playGame(void) {
+    char board[ROWS][COLS] = {
+        {'1', '2', '3'},
+        {'4', '5', '6'},
+        {'7', '8', '9'}
+    };
+    outputBord(board);
 }
