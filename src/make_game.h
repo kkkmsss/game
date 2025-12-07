@@ -11,8 +11,6 @@
 #define COLS 3
 #define MIN_TURN_TO_WIN 5
 
-// gcc src/main.c src/make_game.c -o game
-
 void outputMassage(void);
 void outputBoard(char board[ROWS][COLS]);
 void convBoard(char board[ROWS][COLS], char mark);
