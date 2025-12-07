@@ -20,6 +20,6 @@ int checkRowsWin(char board[ROWS][COLS], char mark);
 int checkColsWin(char board[ROWS][COLS], char mark);
 int checkCrossWin(char board[ROWS][COLS], char mark);
 void winingMessage(char mark);
-void playGame(void);
+int playGame(void);
 
 #endif // MAKE_GAME_H

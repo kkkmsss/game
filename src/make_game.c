@@ -41,19 +41,6 @@ void outputMassage(void) {
 }
 
 int checkRowsWin(char board[ROWS][COLS], char mark) {
-    if (board[0][0] == mark && board[1][0] == mark && board[2][0] == mark) {        
-        return 1;
-    }
-    if (board[0][1] == mark && board[1][1] == mark && board[2][1] == mark) {
-        return 1;
-    }
-    if (board[0][2] == mark && board[1][2] == mark && board[2][2] == mark) {
-        return 1;
-    }
-    return 0;
-}
-
-int checkColsWin(char board[ROWS][COLS], char mark) {
     if (board[0][0] == mark && board[0][1] == mark && board[0][2] == mark) {        
         return 1;
     }
@@ -66,11 +53,24 @@ int checkColsWin(char board[ROWS][COLS], char mark) {
     return 0;
 }
 
+int checkColsWin(char board[ROWS][COLS], char mark) {
+    if (board[0][0] == mark && board[1][0] == mark && board[2][0] == mark) {        
+        return 1;
+    }
+    if (board[0][1] == mark && board[1][1] == mark && board[2][1] == mark) {
+        return 1;
+    }
+    if (board[0][2] == mark && board[1][2] == mark && board[2][2] == mark) {
+        return 1;
+    }
+    return 0;
+}
+
 int checkCrossWin(char board[ROWS][COLS], char mark) {
     if (board[0][0] == mark && board[1][1] == mark && board[2][2] == mark) {        
         return 1;
     }    
-    if (board[2][0] == mark && board[1][1] == mark && board[2][0] == mark) {
+    if (board[2][0] == mark && board[1][1] == mark && board[0][2] == mark) {
         return 1;
     }
     return 0;
@@ -98,12 +98,12 @@ void winingMessage(char mark) {
     }    
 }
 
-void playGame(void) {
+int playGame(void) {
     char board[ROWS][COLS] = {
         {'1', '2', '3'},
         {'4', '5', '6'},
         {'7', '8', '9'}
-    };        
+    };       
     int i;
     for (i = 0; i < MAX_TURN; i++) {
         outputMassage();
@@ -114,7 +114,7 @@ void playGame(void) {
                 if (checkWin(board, 'O') == 1) {                    
                     outputBoard(board);
                     winingMessage('O');
-                    break;
+                    return 0;
                 }
             }
         } else {
@@ -123,11 +123,12 @@ void playGame(void) {
                 if (checkWin(board, 'X') == 1) {
                     outputBoard(board);
                     winingMessage('X');                    
-                    break;
+                    return 0;
                 }
             }
         }
         outputBoard(board);
-    }
-    outputResultDrow();
+    }    
+        outputResultDrow();
+        return 0;    
 }
