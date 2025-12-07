@@ -41,26 +41,48 @@ void outputMassage(void) {
 }
 
 int checkRowsWin(char board[ROWS][COLS], char mark) {
-    
+    if (board[0][0] == mark && board[1][0] == mark && board[2][0] == mark) {        
+        return 1;
+    }
+    if (board[0][1] == mark && board[1][1] == mark && board[2][1] == mark) {
+        return 1;
+    }
+    if (board[0][2] == mark && board[1][2] == mark && board[2][2] == mark) {
+        return 1;
+    }
+    return 0;
 }
 
 int checkColsWin(char board[ROWS][COLS], char mark) {
-
+    if (board[0][0] == mark && board[0][1] == mark && board[0][2] == mark) {        
+        return 1;
+    }
+    if (board[1][0] == mark && board[1][1] == mark && board[1][2] == mark) {
+        return 1;
+    }
+    if (board[2][0] == mark && board[2][1] == mark && board[2][2] == mark) {
+        return 1;
+    }
+    return 0;
 }
 
 int checkCrossWin(char board[ROWS][COLS], char mark) {
-
+    if (board[0][0] == mark && board[1][1] == mark && board[2][2] == mark) {        
+        return 1;
+    }    
+    if (board[2][0] == mark && board[1][1] == mark && board[2][0] == mark) {
+        return 1;
+    }
+    return 0;
 }
 
-int checkWin(char board[ROWS][COLS], char mark) {
+int checkWin(char board[ROWS][COLS], char mark) {    
     if (checkRowsWin(board, mark) == 1) {
         return 1;
     }
-
     if (checkColsWin(board, mark) == 1) {
         return 1;
     }
-
     if (checkCrossWin(board, mark) == 1) {
         return 1;
     }
@@ -69,10 +91,10 @@ int checkWin(char board[ROWS][COLS], char mark) {
 
 void winingMessage(char mark) {
     if (mark == 'O') {
-        printf("Winner: \x1b[31m%c\x1b[0m ", mark);
+        printf("Winner: \x1b[31m%c\x1b[0m \n", mark);
     }
     if (mark == 'X') {
-        printf("Winner: \x1b[34m%c\x1b[0m ", mark);
+        printf("Winner: \x1b[34m%c\x1b[0m \n", mark);
     }    
 }
 
@@ -81,32 +103,31 @@ void playGame(void) {
         {'1', '2', '3'},
         {'4', '5', '6'},
         {'7', '8', '9'}
-    };    
-    int turn = 0;
+    };        
     int i;
     for (i = 0; i < MAX_TURN; i++) {
         outputMassage();
         outputBoard(board);
-        if (turn % 2 == 0) {
+        if (i % 2 == 0) {
             convBoard(board, 'O');
-            if (turn >= MIN_TURN_TO_WIN) {
-                if (checkWin(board, 'O') == 1) {
+            if (i + 1 >= MIN_TURN_TO_WIN) {
+                if (checkWin(board, 'O') == 1) {                    
+                    outputBoard(board);
                     winingMessage('O');
                     break;
                 }
             }
-            turn = turn + 1;
         } else {
             convBoard(board, 'X');
-            if (turn >= MIN_TURN_TO_WIN) {
+            if (i + 1 >= MIN_TURN_TO_WIN) {
                 if (checkWin(board, 'X') == 1) {
-                    winingMessage('X');
+                    outputBoard(board);
+                    winingMessage('X');                    
                     break;
                 }
             }
-            turn = turn + 1;
         }
-        outputBoard(board);        
+        outputBoard(board);
     }
     outputResultDrow();
 }
